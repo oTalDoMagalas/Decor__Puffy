@@ -102,13 +102,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     elseif (isset($_POST['calcular'])) {
         $dias = (int)$_POST['dias_calculo'];
         $tipo = $_POST['tipo_calculo'];
-        $roupinha = match ($tipo) {
-            'Terno_c' => 'Terno Completo',
-            'Smoking' => 'Smoking',
-            'Blazer' => 'Blazer',
-            'Vestido_l' => 'Vestido Longo',
-            'Vestido_c' => 'Vestido Curto',
-            'Vestido_d' => 'Vestido de Debutante',
+        $decoracaozinha = match ($tipo) {
+            'Niver' => 'Aniversário',
+            'Casamento' => 'Casasmento',
+            'Forma' => 'Formatura',
+            'Materiais' => 'Materiais',
             default => null
         };
         $quantidade = (int)($_POST['quantidade_pecas'] ?? 1); // Pegando a quantidade, padrão 1
@@ -121,9 +119,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Editar roupa
     elseif (isset($_POST['editar'])) {
-        $nomeOriginal = $_POST['nome_original'];  // O nome da roupa a ser editada
-        $novoNome     = $_POST['nome'];  // O novo nome
-        $novaMarca    = $_POST['marca'];  // A nova marca
+        $nomeOriginal = $_POST['tema_original'];  // O nome da roupa a ser editada
+        $novoNome     = $_POST['tema'];  // O novo nome
+        $novaMarca    = $_POST['tamanho'];  // A nova marca
         $novoTipo     = $_POST['tipo'];  // O novo tipo da roupa
         $imagemAtual  = $_POST['imagem_atual'] ?? null;  // Se tiver imagem atual
         $imagemNova   = null;  // Nova imagem, caso enviada
@@ -145,16 +143,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Criação da nova roupa com as informações editadas
         switch ($novoTipo) {
             case 'Niver':
-                $decoracao = new Niver($tema, $marca, $imagem);
+                $decoracao = new Niver($tema, $tamanho, $imagem);
                 break;
             case 'Casamento':
-                $decoracao = new Casamento($tema, $marca, $imagem);
+                $decoracao = new Casamento($tema, $tamanho, $imagem);
                 break;
             case 'Forma':
-                $decoracao = new Forma($tema, $marca, $imagem);
+                $decoracao = new Forma($tema, $tamanho, $imagem);
                 break;
             case 'Materiais':
-                $decoracao = new Materiais($tema, $marca, $imagem);
+                $decoracao = new Materiais($tema, $tamanho, $imagem);
                 break;
             default:
                 $mensagem = "Tipo de decoração inválido.";
@@ -164,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Agora chamando o método corretamente, com todos os parâmetros
         $mensagem = $locadora->editarDecoracao(
             $temaOriginal,
-            $temaNome,
+            $novoTemqa,
             $novoTamanho,
             $novoTipo,
             $imagemFinal
