@@ -1,0 +1,26 @@
+[
+    {
+        "username": "admin",
+        "email": "",
+        "password": "$2y$12$o4puChG8n2ZuGN1LebhujOQo5tAWwlIppwZTHJXWPAcOhhzCby.Tq",
+        "perfil": "admin"
+    },
+    {
+        "username": "usuario",
+        "email": "teste@gmail.com",
+        "password": "$2y$12$z1finJAqi7uzIyELV6.L1um7f5ucVT0g4G5Z205LPbekmVye5.8Eu",
+        "perfil": "usuario"
+    },
+    {
+        "username": "John Cena",
+        "email": "nothing@gmail.com",
+        "password": "$2y$12$azgX910HwmCkUhVkMtny4OcBoA78Q91TmFVoc.CBtxovvxSBP1B6m",
+        "perfil": "usuario"
+    },
+    {
+        "username": "John Wick",
+        "email": "wick@support.com",
+        "password": "$2y$12$h9Wue18P72Eo60PKBR7m3.XFcOSAHnfTJsWfP1lco48Av4luxEWaq",
+        "perfil": "usuario"
+    }
+]
