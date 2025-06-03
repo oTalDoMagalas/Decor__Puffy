@@ -64,137 +64,191 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Locadora de Roupas</title>
+    <!-- Link Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!-- Link ícones do bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <title>Signin - Locadora de Roupas</title>
-    
-    
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> 
 
-    <link rel="stylesheet" href="load-css.php">
+    <!-- CSS Interno -->
     <style>
-        .login-container {
-            max-width: 400px;
-            margin: auto;
-            margin-bottom: 50px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        .password-toggle {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-
-        header img {
-            max-height: 200px;
-        }
-
-        header {
+        body {
+            background-image: url('../img/6172659.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
 
-        .card-header {
-            background-color: #735943;
+        header {
+            width: 100%;
+            background-color: #343a40;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+        }
+
+        header img {
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        header h1 {
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.71);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             text-align: center;
-            color: #FFFFFF;
+            margin-top: 40px;
         }
 
-        h4 {
-            font-weight: 600;
-            font-size: 1.3rem;
+        h2 {
+            margin-bottom: 25px;
+            color: rgb(0, 0, 0);
         }
 
-        .card {
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
             border: none;
-            border-radius: 10px;
+            background-color: #eee;
+            border-radius: 8px;
         }
 
-        .card-body {
-            background-color: #9D9383;
-            border-radius: 0px 0px 10px 10px;
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+            flex-wrap: wrap;
         }
 
-        .form-label {
-            color: #FFFFFF;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .custom-btn {
-            background-color: #A27E60 !important;
-            /* Sobrescreve o Bootstrap */
-            color: white;
+        .btn {
+            background-color: #FFD700;
             border: none;
-            transition: ease 0.3s;
-            font-size: 1.2rem;
+            padding: 12px 20px;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        input {
-            height: 45px;
-            background-color: #E1DDD9;
-            opacity: 80%;
+        .btn:hover {
+            background-color: #FFD700;
         }
 
-        input::placeholder {
-            color: #735943 !important;
-            font-size: 0.9rem;
+        .google-btn {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: white;
+            color: #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        @media (max-width: 768px) {
-            .card {
-                margin-left: 20px;
-                margin-right: 20px;
-            }
+        .google-btn i {
+            margin-right: 10px;
+            color: #DB4437;
+        }
+
+        .google-btn:hover {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header .fw-bold {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .black-link{
+            color: black;
+            text-decoration: underline;
         }
     </style>
-    <title>Document</title>
 </head>
+    </style>
+
+</head>
+
 <body>
-    <header class="header">
-        <img src="../assets/logo-lavie.png" alt="Logo Lavie" class="logo">
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="../img/logo.png" alt="Logo">
+            <h1 class="fw-bold fs-4">Decor Puffy</h1>
+        </div>
+        <a href="../index.php" class="btn btn-warning">
+            <i class="bi bi-arrow-left"></i> Para a página inicial
+        </a>
     </header>
-    <div class="login-container">
+    
 
-    <!-- Criação de Cards Bootstrap -->
-        <div class="card">
-            <!-- Título do card -->
-            <div class="card-header p-3">
-                <h4 class="mb-1" style="text-transform: uppercase;">cadastrar</h4>
-            </div>
-
-            <!-- Corpo do card -->
-            <div class="card-body">
-
-            <?php if ($mensagem): ?>
-                <div class="alert alert-danger"><?= htmlspecialchars($mensagem) ?></div>
-                <?php endif; ?>
-                <form method="post" class="needs-validation" novalidate action="signin.php">
-                    <!-- Input - hidden | não aparece -->
-                    <!-- Ele busca informações no JSON para validação, o usuário não vê -->
-                    <!-- <input type="hidden"> -->
-
-                    <div class="mb-4">
+    <div class="container">
+        <?php if (!empty($message)): ?>
+                            
+                            <div class="alert alert-danger mt-4"><a href="login.php" class="black-link"><?= htmlspecialchars($message) ?></a></div>
+                        <?php endif; ?>
+        <h2>Cadastrar-se</h2>
+        <form method="post" class="needs-validation" novalidate>
+            <div class="mb-4">
                         <label for="username" class="form-label">
                             Usuário:
                         </label>
                         <input type="text" name="username" class="form-control" required autocomplete="off" placeholder="Digite seu usuário aqui..." id="username">
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="form-label">
-                            E-Mail:
-                        </label>
-                        <input type="email" name="email" class="form-control"  autocomplete="off" placeholder="Digite seu e-mail aqui..." id="email">
-                    </div>
-                    <div class="mb-4 position-relative">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label">
+                        E-Mail:
+                    </label>
+                    <input type="email" name="email" class="form-control" autocomplete="off" placeholder="Digite seu e-mail aqui..." id="email">
+                </div>
+            <div class="mb-4 position-relative">
                         <label for="password" class="form-label">
                             Senha:
                         </label>
@@ -204,18 +258,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <i class="bi bi-eye-slash" id="olho"></i>
                         </span>
                     </div>
-                    <div class="d-flex justify-content-center gap-2 mb-2 mt-2">
-                        <button type="submit" class="btn custom-btn text-nowrap">Cadastrar</button>
-                        <a href="../index.php" class="btn custom-btn text-nowrap">Voltar</a>
-                    </div>
-                    <div style="text-align: center; text-transform: uppercase;" class="mt-3 ">
-                        <?php if (!empty($message)): ?>
-                            <a href="login.php" class="link-custom-line"><?= htmlspecialchars($message) ?></a>
-                        <?php endif; ?>
-                    </div>
-                </form>
+
+            <div class="button-container">
+                <button type="submit" class="btn">Criar Conta</button>
+                <a href="login.php"><button type="button" class="btn">Voltar</button></a>
             </div>
-        </div>
+            
+        </form>
+
+        <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dlemail%26oq%3Dlemail%26gs_lcrp%3DEgZjaHJvbWUyBggAEEUYOdIBCDI3MTRqMGoxqAIAsAIB%26sourceid%3Dchrome%26ie%3DUTF-8%26sei%3DyooHaLSUCci65OUPioSb-A8&ec=GAZAAQ&hl=pt-BR&ifkv=AXH0vVunzOuCUUg7uMo_9vtAjAihfS0t_ZqdZTO_cEdM1T6_Ke4y_jTYIhrJjxyWpHWdlBfUo1Riyw&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S438279765%3A1745324752546731" class="google-btn">
+            <i class="fab fa-google"></i> Entrar com Google
+        </a>
     </div>
 
 
@@ -234,6 +287,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     </script>
-
 </body>
+
 </html>

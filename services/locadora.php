@@ -74,8 +74,8 @@ class Locadora
 
     public function adicionarDecoracao(Decoracao $decoracao): string
     {
-        foreach ($this->decoracoes as $r) {
-            if ($r->getTema() === $decoracao->getTema() && $r->getTamanho() === $decoracao->getTamanho()) {
+        foreach ($this->decoracoes as $deco) {
+            if ($deco->getTema() === $decoracao->getTema() && $deco->getTamanho() === $decoracao->getTamanho()) {
                 return "Decoração já cadastrada!";
             }
         }
@@ -170,14 +170,27 @@ class Locadora
         return $this->decoracoes;
     }
 
-    public function calcularPrevisaoAluguel($tipo, $dias, $quantidade): float
-    {
-        return match ($tipo) {
-            'Niver'   => (new Niver('', '', null))->calcularAluguel($dias) * $quantidade,
-            'Casamento'   => (new Casamento('', '', null))->calcularAluguel($dias) * $quantidade,
-            'Forma'    => (new Forma('', '', null))->calcularAluguel($dias) * $quantidade,
-            'Materiais' => (new Materiais('', '', null))->calcularAluguel($dias) * $quantidade,
-            default     => 0.0,
-        };
-    }
+    public function calcularPrevisaoAluguel($tipo, $tamanho, $dias, $quantidade): float
+{
+    // Pega o valor do tipo
+    $valorTipo = match ($tipo) {
+        'Niver'      => DIARIA_NIVER,
+        'Casamento'  => DIARIA_CASAMENTO,
+        'Forma'      => DIARIA_FORMA,
+        'Materiais'  => DIARIA_MATERIAIS,
+        default      => 0.0,
+    };
+
+    // Pega o valor do tamanho
+    $valorTamanho = match (strtolower($tamanho)) {
+        'pequeno' => PEQUENO,
+        'medio', 'médio' => MEDIO,
+        'grande' => GRANDE,
+        default  => 0.0,
+    };
+
+    // Soma tipo + tamanho, multiplica por dias e quantidade
+    return ($valorTipo + $valorTamanho) * $dias * $quantidade;
 }
+}
+

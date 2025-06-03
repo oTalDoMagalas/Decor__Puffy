@@ -3,11 +3,13 @@ namespace Models;
 use Interfaces\Locavel;
 
 class Forma extends Decoracao implements Locavel {
+    protected string $tamanho;
     private ?string $imagem;
 
     public function __construct(string $tema, string $tamanho, ?string $imagem = null)
     {
         parent::__construct($tema, $tamanho);
+        $this->tamanho = $tamanho;
         $this->imagem = $imagem;
     }
 
@@ -20,6 +22,10 @@ class Forma extends Decoracao implements Locavel {
     {
         return $this->imagem;
     }
+
+    public function getTamanho(): string {
+    return $this->tamanho;
+}
 
     public function calcularAluguel(int $dias): float {
         return $dias * DIARIA_FORMA;

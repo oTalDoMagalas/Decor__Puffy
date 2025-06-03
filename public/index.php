@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
             $ext = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
             $imagemNome = uniqid() . '.' . $ext;
-            $caminhoDestino = __DIR__ . '/../uplodas/' . $imagemNome;
+            $caminhoDestino = __DIR__ . '/../uploads/' . $imagemNome;
 
             if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
                 $imagem = '../uploads/' . $imagemNome; // Salva o caminho da imagem
@@ -102,72 +102,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     elseif (isset($_POST['calcular'])) {
         $dias = (int)$_POST['dias_calculo'];
         $tipo = $_POST['tipo_calculo'];
+        $tamanho = $_POST['tamanho_calculo'] ?? null;
         $decoracaozinha = match ($tipo) {
             'Niver' => 'Aniversário',
-            'Casamento' => 'Casasmento',
+            'Casamento' => 'Casamento',
             'Forma' => 'Formatura',
             'Materiais' => 'Materiais',
             default => null
         };
         $quantidade = (int)($_POST['quantidade_pecas'] ?? 1); // Pegando a quantidade, padrão 1
 
-        $valor = $locadora->calcularPrevisaoAluguel($tipo, $dias, $quantidade);
-
-        $mensagem = "Previsão de valor para {$quantidade} peça(s) de {$roupinha} por {$dias} dia(s): R$" . number_format($valor, 2, ',', '.');
+        $valor = $locadora->calcularPrevisaoAluguel($tipo, $tamanho, $dias, $quantidade);
+        $mensagem = "Previsão de valor para {$quantidade} peça de {$decoracaozinha} por {$dias} dia(s): R$" . number_format($valor, 2, ',', '.');
     }
 
 
     // Editar roupa
     elseif (isset($_POST['editar'])) {
-        $nomeOriginal = $_POST['tema_original'];  // O nome da roupa a ser editada
-        $novoNome     = $_POST['tema'];  // O novo nome
-        $novaMarca    = $_POST['tamanho'];  // A nova marca
-        $novoTipo     = $_POST['tipo'];  // O novo tipo da roupa
-        $imagemAtual  = $_POST['imagem_atual'] ?? null;  // Se tiver imagem atual
-        $imagemNova   = null;  // Nova imagem, caso enviada
+    $nomeOriginal  = $_POST['tema_original'];
+    $novoNome      = $_POST['tema'];
+    $novoTamanho   = $_POST['tamanho'];
+    $novoTipo      = $_POST['tipo'];
+    $imagemAtual   = $_POST['imagem_atual'] ?? null;
+    $imagemNova    = null;
 
-        // Se uma nova imagem foi enviada, usa ela; senão mantém a antiga
-        if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $ext = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
-            $imagemNome = uniqid() . '.' . $ext;
-            $caminhoDestino = __DIR__ . '/../uploads/' . $imagemNome;
-
-            if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
-                $imagemNova = '../uploads/' . $imagemNome;
-            }
-        }
-
-        // Se não tiver nova imagem, usa a imagem atual
-        $imagemFinal = $imagemNova ?: $imagemAtual;
-
-        // Criação da nova roupa com as informações editadas
-        switch ($novoTipo) {
-            case 'Niver':
-                $decoracao = new Niver($tema, $tamanho, $imagem);
-                break;
-            case 'Casamento':
-                $decoracao = new Casamento($tema, $tamanho, $imagem);
-                break;
-            case 'Forma':
-                $decoracao = new Forma($tema, $tamanho, $imagem);
-                break;
-            case 'Materiais':
-                $decoracao = new Materiais($tema, $tamanho, $imagem);
-                break;
-            default:
-                $mensagem = "Tipo de decoração inválido.";
-                goto renderizar;
-        }
-
-        // Agora chamando o método corretamente, com todos os parâmetros
-        $mensagem = $locadora->editarDecoracao(
-            $temaOriginal,
-            $novoTemqa,
-            $novoTamanho,
-            $novoTipo,
-            $imagemFinal
-        );
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+        // salvar arquivo enviado, definir $imagemNova
     }
-}
+
+    $imagemFinal = $imagemNova ?: $imagemAtual;
+
+    // Instanciar um novo objeto do tipo correto, usando $novoNome, $novoTamanho, $imagemFinal
+    switch ($novoTipo) {
+        case 'Niver':
+            $decoracao = new Niver($novoNome, $novoTamanho, $imagemFinal);
+            break;
+        case 'Casamento':
+            $decoracao = new Casamento($novoNome, $novoTamanho, $imagemFinal);
+            break;
+        case 'Forma':
+            $decoracao = new Forma($novoNome, $novoTamanho, $imagemFinal);
+            break;
+        case 'Materiais':
+            $decoracao = new Materiais($novoNome, $novoTamanho, $imagemFinal);
+            break;
+        default:
+            $mensagem = "Tipo de decoração inválido.";
+            goto renderizar;
+    }
+
+    // Chamar o método que faz o update, passando $nomeOriginal e o novo objeto
+    $mensagem = $locadora->editarDecoracao(
+        $nomeOriginal,
+        $novoNome,
+        $novoTamanho,
+        $novoTipo,
+        $imagemFinal
+    );
+    }
+} // <-- Fechando o if ($_SERVER['REQUEST_METHOD'] === 'POST')
 renderizar:
 require_once __DIR__ . '/../views/template.php';

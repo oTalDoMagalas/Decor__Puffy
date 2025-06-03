@@ -22,5 +22,47 @@
         "email": "wick@support.com",
         "password": "$2y$12$h9Wue18P72Eo60PKBR7m3.XFcOSAHnfTJsWfP1lco48Av4luxEWaq",
         "perfil": "usuario"
+    },
+    {
+        "username": "admin2",
+        "email": "",
+        "password": "$2y$12$Ph6w19O27S3\/QXzrJHBnRugywg3o4KolVo7ln2.Wnqx\/ee.hgMo5S",
+        "perfil": "usuario"
+    },
+    {
+        "username": "user2",
+        "email": "user@gmail.com",
+        "password": "$2y$12$4o\/1DCJVUHgmhj8mf0OmneLeGx7aeo0CS0x6MGia\/G4JqTiwc3wzy",
+        "perfil": "usuario"
+    },
+    {
+        "username": "luquinhasdelas08",
+        "email": "luquinhasdelas08@gmail.com",
+        "password": "$2y$12$6E.yewUAxfRc\/4GbdJ3zGORqES2gay8XQ\/DvqkroNB9d45DJfDNiu",
+        "perfil": "usuario"
+    },
+    {
+        "username": "Morete",
+        "email": "morete@gmail.com",
+        "password": "$2y$12$JdYTm\/p5UT4KPGpWEJO8pezv2tEiLQMoSng33cyvcKkrOEgXieXhm",
+        "perfil": "usuario"
+    },
+    {
+        "username": "felipe",
+        "email": "felipe@gmail,com",
+        "password": "$2y$12$3hbl0RggW18n.2mrY56UreMHsiEJmSVINRa1hh7TwMBJuG4nP7KTG",
+        "perfil": "usuario"
+    },
+    {
+        "username": "Hernandes",
+        "email": "Hernandes@gmail.com",
+        "password": "$2y$12$m6LZ0.SXHO3NAsEnSxqAf.u0HErxvYPa\/SDqsEWBUNu06MKbZ6b0y",
+        "perfil": "usuario"
+    },
+    {
+        "username": "Magalas",
+        "email": "magalas@gmail.com",
+        "password": "$2y$12$OoHpfdfAY.CcQc\/F88b9g.V4eb4lS\/xSOHwMTKSLgRHwh\/hCrhW3m",
+        "perfil": "usuario"
     }
 ]

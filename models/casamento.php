@@ -3,11 +3,13 @@ namespace Models;
 use Interfaces\Locavel;
 
 class Casamento extends Decoracao implements Locavel {
+    protected string $tamanho;
     private ?string $imagem;
 
     public function __construct(string $tema, string $tamanho, ?string $imagem = null)
     {
         parent::__construct($tema, $tamanho);
+        $this->tamanho = $tamanho;
         $this->imagem = $imagem;
     }
 
@@ -32,6 +34,10 @@ class Casamento extends Decoracao implements Locavel {
         }
         return "Decoração '{$this->getTema()}' não está disponível.";
     }
+
+public function getTamanho(): string {
+    return $this->tamanho;
+}
 
     public function devolver(): string {
         if (!$this->isDisponivel()) {
