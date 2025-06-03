@@ -64,5 +64,11 @@
         "email": "magalas@gmail.com",
         "password": "$2y$12$OoHpfdfAY.CcQc\/F88b9g.V4eb4lS\/xSOHwMTKSLgRHwh\/hCrhW3m",
         "perfil": "usuario"
+    },
+    {
+        "username": "raul",
+        "email": "raul@gmail.com",
+        "password": "$2y$12$5B2OYBUGxq6YUd26SeyH5uU.OHXnjbuEV4Gah4m6bNu9WkqSrBNA.",
+        "perfil": "usuario"
     }
 ]
