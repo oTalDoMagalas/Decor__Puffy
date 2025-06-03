@@ -12,7 +12,11 @@
     <style>
     body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+<<<<<<< HEAD
     background-color:rgb(255, 255, 255);
+=======
+    background-color: rgb(255, 255, 255);
+>>>>>>> 1a0d1d8e00faa468ef13ccb7dfbf648ecaa6b498
     margin: 0;
     padding: 0;
 }
