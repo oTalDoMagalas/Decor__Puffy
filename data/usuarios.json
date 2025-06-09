@@ -70,5 +70,17 @@
         "email": "raul@gmail.com",
         "password": "$2y$12$5B2OYBUGxq6YUd26SeyH5uU.OHXnjbuEV4Gah4m6bNu9WkqSrBNA.",
         "perfil": "usuario"
+    },
+    {
+        "username": "yago",
+        "email": "yago@gmail.com",
+        "password": "$2y$12$hvxTo9RFVJh.fYmPdi0qlOXYdKEihG\/TQvFUJTgQ0sfWY91K8tv8q",
+        "perfil": "usuario"
+    },
+    {
+        "username": "Gustavo",
+        "email": "gustavo@gmail.com",
+        "password": "$2y$12$ZLLkYrtizaW\/j5u9a1oYa.SrESvcuIbQPyT7vcVwcczSJyoEHvYKy",
+        "perfil": "usuario"
     }
 ]

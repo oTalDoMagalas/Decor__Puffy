@@ -12,11 +12,7 @@
     <style>
     body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-<<<<<<< HEAD
-    background-color:rgb(255, 255, 255);
-=======
     background-color: rgb(255, 255, 255);
->>>>>>> 1a0d1d8e00faa468ef13ccb7dfbf648ecaa6b498
     margin: 0;
     padding: 0;
 }
@@ -297,6 +293,7 @@ header .icon-group i {
 
   <footer style="background-color: #343a40; color: white; text-align: center; padding: 20px 0; margin-top: auto; width: 100%;">
     <p style="margin: 0;">Entre em contato • © 2025 Decor Puffy</p>
+    <p>DecorPuffy@gmail.com</p>
 </footer>
 
 
